@@ -8,31 +8,42 @@ import {
     Box,
     useTheme,
 } from '@mui/material';
-import { Star as StarIcon } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
+import { ArrowBackIosNew, ArrowForwardIos, FiberManualRecord, Star as StarIcon } from '@mui/icons-material';
 import { motion } from 'framer-motion';
-import Carousel from 'react-material-ui-carousel'; // Ensure this library is installed
+import { Carousel } from 'nuka-carousel';
 
 const TestimonialCarousel = ({ testimonials }) => {
     const theme = useTheme();
     return (
         <Carousel
-            animation="slide"
-            navButtonsAlwaysVisible
-            indicatorContainerProps={ {
-                style: {
-                    marginTop: theme.spacing(3),
-                },
-            } }
-            activeIndicatorIconButtonProps={ {
-                style: {
-                    color: theme.palette.primary.main, // Active dot color
-                },
-            } }
-            indicatorIconButtonProps={ {
-                style: {
-                    color: theme.palette.text.secondary, // Inactive dot color
-                },
-            } }
+            slidesToShow={1}
+            wrapAround
+            renderCenterLeftControls={({ previousSlide }) => (
+                <IconButton onClick={previousSlide} sx={{ color: theme.palette.primary.main }}>
+                    <ArrowBackIosNew />
+                </IconButton>
+            )}
+            renderCenterRightControls={({ nextSlide }) => (
+                <IconButton onClick={nextSlide} sx={{ color: theme.palette.primary.main }}>
+                    <ArrowForwardIos />
+                </IconButton>
+            )}
+            renderBottomCenterControls={({ slideCount, currentSlide, goToSlide }) => (
+                <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+                    {Array.from({ length: slideCount }).map((_, index) => (
+                        <IconButton
+                            key={index}
+                            onClick={() => goToSlide(index)}
+                            sx={{
+                                color: currentSlide === index ? theme.palette.primary.main : theme.palette.text.secondary,
+                            }}
+                        >
+                            <FiberManualRecord sx={{ fontSize: 12 }} />
+                        </IconButton>
+                    ))}
+                </Box>
+            )}
         >
             { testimonials.map((testimonial, i) => (
                 <motion.div

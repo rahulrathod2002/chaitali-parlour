@@ -148,13 +148,13 @@ const ContactUs = () => {
                                 viewport={ { once: true, amount: 0.3 } }
                                 transition={ { duration: 0.7, delay: 0.2 } }
                             >
-                                <Card sx={ { 
-                                    p: 4, 
-                                    borderRadius: 4, 
+                                <Card sx={ {
+                                    p: 4,
+                                    borderRadius: 4,
                                     background: 'rgba(255, 255, 255, 0.8)',
                                     backdropFilter: 'blur(10px)',
                                     border: '1px solid rgba(255, 255, 255, 0.2)',
-                                    boxShadow: theme.shadows[10],
+                                    boxShadow: theme.shadows[ 10 ],
                                 } }>
                                     <Typography variant="h4" gutterBottom sx={ { fontFamily: 'Cormorant Garamond' } }>
                                         Send us a Message
@@ -162,7 +162,7 @@ const ContactUs = () => {
                                     <form onSubmit={ handleSubmit }>
                                         <Grid container spacing={ 3 }>
                                             <Grid item xs={ 12 }>
-                                                <motion.div variants={formVariants} initial="hidden" animate="visible" custom={0}>
+                                                <motion.div variants={ formVariants } initial="hidden" animate="visible" custom={ 0 }>
                                                     <TextField
                                                         fullWidth
                                                         label="Your Name"
@@ -171,14 +171,14 @@ const ContactUs = () => {
                                                         onChange={ handleChange }
                                                         required
                                                         variant="filled"
-                                                        InputProps={{
+                                                        InputProps={ {
                                                             startAdornment: <InputAdornment position="start"><PersonOutlineIcon /></InputAdornment>,
-                                                        }}
+                                                        } }
                                                     />
                                                 </motion.div>
                                             </Grid>
                                             <Grid item xs={ 12 }>
-                                                <motion.div variants={formVariants} initial="hidden" animate="visible" custom={1}>
+                                                <motion.div variants={ formVariants } initial="hidden" animate="visible" custom={ 1 }>
                                                     <TextField
                                                         fullWidth
                                                         label="Your Email"
@@ -188,14 +188,14 @@ const ContactUs = () => {
                                                         required
                                                         type="email"
                                                         variant="filled"
-                                                        InputProps={{
+                                                        InputProps={ {
                                                             startAdornment: <InputAdornment position="start"><EmailIcon /></InputAdornment>,
-                                                        }}
+                                                        } }
                                                     />
                                                 </motion.div>
                                             </Grid>
                                             <Grid item xs={ 12 }>
-                                                <motion.div variants={formVariants} initial="hidden" animate="visible" custom={2}>
+                                                <motion.div variants={ formVariants } initial="hidden" animate="visible" custom={ 2 }>
                                                     <TextField
                                                         fullWidth
                                                         label="Your Message"
@@ -206,14 +206,14 @@ const ContactUs = () => {
                                                         multiline
                                                         rows={ 6 }
                                                         variant="filled"
-                                                        InputProps={{
+                                                        InputProps={ {
                                                             startAdornment: <InputAdornment position="start"><MessageOutlinedIcon /></InputAdornment>,
-                                                        }}
+                                                        } }
                                                     />
                                                 </motion.div>
                                             </Grid>
                                             <Grid item xs={ 12 }>
-                                                <motion.div variants={formVariants} initial="hidden" animate="visible" custom={3} whileHover={{scale: 1.02}} whileTap={{scale: 0.98}}>
+                                                <motion.div variants={ formVariants } initial="hidden" animate="visible" custom={ 3 } whileHover={ { scale: 1.02 } } whileTap={ { scale: 0.98 } }>
                                                     <Button
                                                         type="submit"
                                                         variant="contained"
@@ -222,7 +222,7 @@ const ContactUs = () => {
                                                         size="large"
                                                         disabled={ loading }
                                                         startIcon={ loading ? <CircularProgress size={ 20 } color="inherit" /> : <EmailIcon /> }
-                                                        sx={{py: 1.5}}
+                                                        sx={ { py: 1.5 } }
                                                     >
                                                         { loading ? 'Sending...' : 'Send Message' }
                                                     </Button>
@@ -254,7 +254,7 @@ const ContactUs = () => {
                                         <EmailIcon color="primary" sx={ { mr: 1 } } />chaitali.parlour.pune@gmail.com
                                     </Typography>
                                     <Typography variant="body1" sx={ { display: 'flex', alignItems: 'center', mb: 3 } }>
-                                        <AccessTimeIcon color="primary" sx={ { mr: 1 } } /> Mon-Sat: 10:00 AM - 8:00 PM
+                                        <AccessTimeIcon color="primary" sx={ { mr: 1 } } /> Mon-Sun: 10:00 AM - 8:00 PM
                                     </Typography>
                                     <Box sx={ { flexGrow: 1, minHeight: { xs: 200, sm: 300 } } }>
                                         <iframe

@@ -23,7 +23,8 @@ import {
 } from '@mui/icons-material';
 import { DatePicker, TimePicker } from '@mui/x-date-pickers';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import dayjs from 'dayjs';
 import { motion } from 'framer-motion';
 import SEOHead from '../components/common/SEOHead';
 import { servicesData } from '../data/services'; // Ensure this is imported
@@ -92,7 +93,7 @@ const BookAppointment = () => {
             console.log('Appointment booked:', formData);
             showDialog(
                 'Appointment Confirmed!',
-                `Thank you, ${formData.name}! Your appointment for ${formData.service} on ${formData.date.toLocaleDateString()} at ${formData.time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} has been successfully booked. We've sent a confirmation to ${formData.email}.`,
+                `Thank you, ${formData.name}! Your appointment for ${formData.service} on ${dayjs(formData.date).format('MM/DD/YYYY')} at ${dayjs(formData.time).format('h:mm A')} has been successfully booked. We've sent a confirmation to ${formData.email}.`,
                 <Button onClick={ hideDialog } color="primary" autoFocus>
                     OK
                 </Button>
@@ -115,7 +116,7 @@ const BookAppointment = () => {
         }
     };
 
-    const whatsappMessage = `Hello Chaitali Parlour, I\'d like to book an appointment for ${formData.service || 'a service'}. My name is ${formData.name || '...'}, and my phone number is ${formData.phone || '...'}. Preferred Date: ${formData.date ? formData.date.toLocaleDateString() : '...'}, Time: ${formData.time ? formData.time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '...'}. Notes: ${formData.notes || '...'}.`;
+    const whatsappMessage = `Hello Chaitali Parlour, I'd like to book an appointment for ${formData.service || 'a service'}. My name is ${formData.name || '...'}, and my phone number is ${formData.phone || '...'}. Preferred Date: ${formData.date ? dayjs(formData.date).format('MM/DD/YYYY') : '...'}, Time: ${formData.time ? dayjs(formData.time).format('h:mm A') : '...'}. Notes: ${formData.notes || '...'}.`;
     const whatsappLink = `https://wa.me/919130008625?text=${encodeURIComponent(whatsappMessage)}`; // Replace with your WhatsApp number
 
     const formVariants = {
@@ -249,7 +250,7 @@ const BookAppointment = () => {
                                     </Grid>
                                     <Grid item xs={ 12 } sm={ 6 }>
                                         <motion.div variants={formVariants} initial="hidden" animate="visible" custom={4}>
-                                            <LocalizationProvider dateAdapter={ AdapterDateFns }>
+                                            <LocalizationProvider dateAdapter={ AdapterDayjs }>
                                                 <DatePicker
                                                     label="Preferred Date"
                                                     value={ formData.date }
@@ -261,7 +262,7 @@ const BookAppointment = () => {
                                     </Grid>
                                     <Grid item xs={ 12 } sm={ 6 }>
                                         <motion.div variants={formVariants} initial="hidden" animate="visible" custom={5}>
-                                            <LocalizationProvider dateAdapter={ AdapterDateFns }>
+                                            <LocalizationProvider dateAdapter={ AdapterDayjs }>
                                                 <TimePicker
                                                     label="Preferred Time"
                                                     value={ formData.time }

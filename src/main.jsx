@@ -1,25 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
-import { ThemeProvider } from '@mui/material/styles'; // This import is correct for your theme.js
+import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
-import { HelmetProvider } from 'react-helmet-async';
 import theme from './theme/theme.js';
 import { BrowserRouter } from 'react-router-dom';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+// import { createHead, UnheadProvider } from '@unhead/react';
+
+// const head = createHead();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <HelmetProvider>
-      <ThemeProvider theme={ theme }>
-        <CssBaseline /> {/* Resets browser default styles */ }
-        <BrowserRouter>
-          <LocalizationProvider dateAdapter={ AdapterDateFns }>
-            <App />
-          </LocalizationProvider>
-        </BrowserRouter>
-      </ThemeProvider>
-    </HelmetProvider>
+    {/* <UnheadProvider head={head}> */ }
+    <ThemeProvider theme={ theme }>
+      <CssBaseline />
+      <BrowserRouter>
+        <LocalizationProvider dateAdapter={ AdapterDayjs }>
+          <App />
+        </LocalizationProvider>
+      </BrowserRouter>
+    </ThemeProvider>
+    {/* </UnheadProvider> */ }
   </React.StrictMode>,
 );
+
