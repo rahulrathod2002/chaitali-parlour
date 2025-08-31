@@ -12,6 +12,7 @@ const ImageWithFallback = ({ src, alt, placeholder = 'https://placehold.co/600x4
             src={ imgSrc }
             alt={ alt }
             onError={ handleError }
+            loading="lazy"
             { ...rest }
         />
     );

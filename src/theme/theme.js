@@ -45,15 +45,44 @@ let theme = createTheme({
             styleOverrides: {
                 root: {
                     borderRadius: 50,
+                    padding: '10px 24px',
+                    fontWeight: 600,
+                    textTransform: 'none',
+                    transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
                 },
+                containedPrimary: {
+                    background: 'linear-gradient(45deg, #FFC0CB 30%, #FF99AC 90%)', // Pink to a slightly stronger pink
+                    border: 0,
+                    color: '#333333',
+                    boxShadow: '0 3px 5px 2px rgba(255, 182, 193, .3)',
+                    '&:hover': {
+                        transform: 'scale(1.05)',
+                        boxShadow: '0 5px 10px 4px rgba(255, 182, 193, .4)',
+                    },
+                    '&.Mui-disabled': {
+                        background: '#e0e0e0',
+                        color: '#9e9e9e',
+                        boxShadow: 'none',
+                        transform: 'none',
+                    },
+                },
+                outlinedPrimary: {
+                    borderWidth: '2px',
+                    '&:hover': {
+                        borderWidth: '2px',
+                        transform: 'scale(1.05)',
+                        backgroundColor: 'rgba(255, 192, 203, 0.1)' // Faint pink background on hover
+                    }
+                }
             },
         },
         MuiCard: {
             styleOverrides: {
                 root: {
-                    transition: 'transform 0.3s ease-in-out',
+                    transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
                     '&:hover': {
                         transform: 'translateY(-5px)',
+                        boxShadow: '0px 8px 25px rgba(0,0,0,0.08)',
                     },
                 },
             },

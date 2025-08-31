@@ -22,7 +22,7 @@ const NotFound = () => {
                 title="404 Not Found | Chaitali Parlour"
                 description="The page you are looking for does not exist."
                 keywords="404, page not found, error"
-                canonical="https://www.chaitaliparlour.com/404"
+                canonical="https://chaitali-parlour.netlify.app/404"
             />
             <Box
                 sx={ {

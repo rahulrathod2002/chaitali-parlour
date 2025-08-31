@@ -141,7 +141,7 @@ const BookAppointment = () => {
                 title="Book Appointment | Chaitali Parlour - Schedule Your Beauty Session"
                 description="Book your next beauty appointment with Chaitali Parlour online. Choose from our range of services: facials, hair care, bridal makeup, and more."
                 keywords="book beauty appointment, schedule salon, online booking, parlour appointment, beauty salon booking pune"
-                canonical="https://www.chaitaliparlour.com/book"
+                canonical="https://chaitali-parlour.netlify.app/book"
             />
             <Box sx={ { pt: 12, pb: 8, background: `linear-gradient(135deg, ${theme.palette.primary.light} 0%, ${theme.palette.secondary.light} 100%)` } }>
                 <Container maxWidth="sm">

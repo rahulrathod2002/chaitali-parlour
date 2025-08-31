@@ -26,7 +26,7 @@ const GalleryCard = ({ image, onClick }) => {
             >
                 <CardMediaWithFallback
                     component="img"
-                    height="250"
+                    height="300"
                     src={ image.src }
                     alt={ image.alt }
                     sx={ { objectFit: 'cover' } }

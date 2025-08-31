@@ -104,7 +104,7 @@ const ContactUs = () => {
                 title="Contact Us | Chaitali Parlour - Get in Touch"
                 description="Contact Chaitali Parlour for appointments, inquiries, or feedback. Find our address, phone number, email, and location on Google Maps."
                 keywords="contact beauty parlour, salon contact, parlour phone number, parlour email, google maps, pune beauty salon"
-                canonical="https://www.chaitaliparlour.com/contact"
+                canonical="https://chaitali-parlour.netlify.app/contact"
                 structuredData={ {
                     "@type": "ContactPage",
                     "mainEntity": {

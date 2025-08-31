@@ -14,9 +14,9 @@ import ServiceCard from '../components/services/ServiceCard';
 import { servicesData } from '../data/services'; // Ensure this is imported
 
 const Services = () => {
-    const [ filter, setFilter ] = useState('All');
-    const [ searchTerm, setSearchTerm ] = useState('');
-    const [ debouncedSearchTerm, setDebouncedSearchTerm ] = useState('');
+    const [filter, setFilter] = useState('All');
+    const [searchTerm, setSearchTerm] = useState('');
+    const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
     const theme = useTheme();
 
     // Debounce search term
@@ -27,9 +27,9 @@ const Services = () => {
         return () => {
             clearTimeout(handler);
         };
-    }, [ searchTerm ]);
+    }, [searchTerm]);
 
-    const categories = [ 'All', ...new Set(servicesData.map(service => service.category)) ];
+    const categories = ['All', ...new Set(servicesData.map(service => service.category))];
 
     const filteredServices = servicesData.filter(service => {
         const matchesCategory = filter === 'All' || service.category === filter;
@@ -40,92 +40,97 @@ const Services = () => {
 
     return (
         <motion.div
-            initial={ { opacity: 0 } }
-            animate={ { opacity: 1 } }
-            transition={ { duration: 0.5 } }
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
         >
             <SEOHead
-                title="Our Services | Chaitali Parlour - Facials, Hair Care, Bridal & More"
-                description="Explore our wide range of beauty and grooming services including luxury facials, hair care, bridal makeup packages, and more. Find your perfect treatment."
-                keywords="beauty services, facials, hair spa, bridal makeup, manicure, pedicure, waxing, skin treatments, beauty parlour services pune"
-                canonical="https://www.chaitaliparlour.com/services"
-                structuredData={ {
+                title="Professional Hair & Skin Care Services in Pune | Chaitali Beauty Parlour"
+                description="Explore professional hair care, skin care, and facial services at Chaitali Beauty Parlour. We are a top-rated ladies parlour in Pune for all your beauty needs."
+                keywords="professional hair care Pune, skin care and facial services Pune, ladies parlour Pune, beauty parlour chaitali parlour, best parlour near me"
+                canonical="https://chaitali-parlour.netlify.app/services"
+                structuredData={{
                     "@type": "Service",
                     "serviceType": "Beauty & Personal Care",
                     "name": "Chaitali Parlour Services",
+                    "description": "Professional hair care and skin care and facial services at the best ladies parlour in Pune.",
+                    "provider": {
+                        "@type": "BeautySalon",
+                        "name": "Chaitali Beauty Parlour"
+                    },
                     "hasOfferCatalog": {
                         "@type": "OfferCatalog",
                         "name": "Beauty Services Catalog",
                         "itemListElement": servicesData.map(service => service.seo.structuredData)
                     }
-                } }
+                }}
             />
-            <Box sx={ { pt: 12, pb: 8, bgcolor: theme.palette.background.default } }>
+            <Box sx={{ pt: 12, pb: 8, bgcolor: theme.palette.background.default }}>
                 <Container maxWidth="lg">
                     <motion.div
-                        initial={ { y: 50, opacity: 0 } }
-                        animate={ { y: 0, opacity: 1 } }
-                        transition={ { duration: 0.7 } }
+                        initial={{ y: 50, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.7 }}
                     >
-                        <Typography variant="h2" align="center" gutterBottom sx={ { color: theme.palette.text.primary, mb: 2 } }>
-                            Our Full Range of Services
+                        <Typography variant="h2" align="center" gutterBottom sx={{ color: theme.palette.text.primary, mb: 2 }}>
+                            Professional Hair & Skin Care in Pune
                         </Typography>
-                        <Typography variant="body1" align="center" color="text.secondary" paragraph sx={ { mb: 4 } }>
-                            Discover the perfect treatment for your beauty and wellness needs.
+                        <Typography variant="body1" align="center" color="text.secondary" paragraph sx={{ mb: 4 }}>
+                            At Chaitali Beauty Parlour, we offer a wide range of services to meet your beauty and wellness needs.
                         </Typography>
                     </motion.div>
 
                     <motion.div
-                        initial={ { y: 50, opacity: 0 } }
-                        whileInView={ { y: 0, opacity: 1 } }
-                        viewport={ { once: true, amount: 0.2 } }
-                        transition={ { duration: 0.7 } }
+                        initial={{ y: 50, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.7 }}
                     >
-                        <Box sx={ { display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 2, mb: 4 } }>
-                            { categories.map((cat, index) => (
+                        <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 2, mb: 4 }}>
+                            {categories.map((cat, index) => (
                                 <Button
-                                    key={ index }
-                                    variant={ filter === cat ? 'contained' : 'outlined' }
+                                    key={index}
+                                    variant={filter === cat ? 'contained' : 'outlined'}
                                     color="primary"
-                                    onClick={ () => setFilter(cat) }
-                                    sx={ { borderRadius: 50 } }
+                                    onClick={() => setFilter(cat)}
+                                    sx={{ borderRadius: 50 }}
                                 >
-                                    { cat }
+                                    {cat}
                                 </Button>
-                            )) }
+                            ))}
                         </Box>
                     </motion.div>
 
                     <motion.div
-                        initial={ { y: 50, opacity: 0 } }
-                        whileInView={ { y: 0, opacity: 1 } }
-                        viewport={ { once: true, amount: 0.2 } }
-                        transition={ { duration: 0.7, delay: 0.1 } }
+                        initial={{ y: 50, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.7, delay: 0.1 }}
                     >
                         <TextField
                             fullWidth
                             label="Search Services"
                             variant="outlined"
-                            value={ searchTerm }
-                            onChange={ (e) => setSearchTerm(e.target.value) }
-                            sx={ { mb: 6, maxWidth: 600, mx: 'auto', display: 'flex' } }
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            sx={{ mb: 6, maxWidth: 600, mx: 'auto', display: 'flex' }}
                         />
                     </motion.div>
 
-                    <Grid container spacing={ 4 } justifyContent="center">
-                        { filteredServices.length > 0 ? (
+                    <Grid container spacing={4} justifyContent="center">
+                        {filteredServices.length > 0 ? (
                             filteredServices.map((service, index) => (
-                                <Grid item xs={ 12 } sm={ 6 } md={ 4 } key={ service.id }>
-                                    <ServiceCard service={ service } />
+                                <Grid item xs={12} sm={6} md={4} key={service.id}>
+                                    <ServiceCard service={service} />
                                 </Grid>
                             ))
                         ) : (
-                            <Grid item xs={ 12 }>
+                            <Grid item xs={12}>
                                 <Typography variant="h6" align="center" color="text.secondary">
                                     No services found matching your criteria.
                                 </Typography>
                             </Grid>
-                        ) }
+                        )}
                     </Grid>
                 </Container>
             </Box>

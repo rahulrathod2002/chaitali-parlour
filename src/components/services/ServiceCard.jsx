@@ -47,7 +47,7 @@ const ServiceCard = ({ service }) => {
                     component="img"
                     height="200"
                     src={ service.image }
-                    alt={ service.name }
+                    alt={ `${service.name} service at Chaitali Beauty Parlour in Pune` }
                     sx={ { objectFit: 'cover' } }
                 />
                 <CardContent sx={ { flexGrow: 1 } }>

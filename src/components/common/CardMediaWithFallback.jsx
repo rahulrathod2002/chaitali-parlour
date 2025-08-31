@@ -12,6 +12,7 @@ const CardMediaWithFallback = ({ src, placeholder = 'https://placehold.co/600x40
         <CardMedia
             image={ imgSrc }
             onError={ handleError }
+            loading="lazy"
             { ...rest }
         />
     );

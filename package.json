@@ -20,9 +20,11 @@
     "@unhead/react": "latest",
     "dayjs": "^1.11.13",
     "framer-motion": "latest",
+    "gray-matter": "^4.0.3",
     "nuka-carousel": "latest",
     "react": "19.1.1",
     "react-dom": "19.1.1",
+    "react-markdown": "^10.1.0",
     "react-router-dom": "latest"
   },
   "devDependencies": {
