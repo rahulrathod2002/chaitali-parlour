@@ -80,7 +80,7 @@ const ContactUs = () => {
         }
     };
 
-    const mapEmbedUrl = `https://maps.google.com/maps?q=Skylish%20Avenue%2C%20Jambe%20Rd%2C%20Tajane%20Wasti%2C%20Punawale%2C%20Pune%2C%20Maharashtra%20411033&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+    const mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.212472747093!2d73.730321!3d18.6324026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bb0054e62c2f%3A0xb5efa7b1df27a7e4!2sChaitali%20Beauty%20Parlour!5e0!3m2!1sen!2sin!4v1693471234567!5m2!1sen!2sin";
 
     const formVariants = {
         hidden: { opacity: 0, y: 20 },
@@ -245,7 +245,7 @@ const ContactUs = () => {
                                         Visit Us
                                     </Typography>
                                     <Typography variant="body1" sx={ { display: 'flex', alignItems: 'center', mb: 2 } }>
-                                        <LocationOnIcon color="primary" sx={ { mr: 1 } } /> Skylish Avenue, Jambe Rd, Tajane Wasti, Punawale, Pune, Maharashtra 411033
+                                        <LocationOnIcon color="primary" sx={ { mr: 1 } } /> Skylish Avenue society, A 502, Pradhikaran, Punawale, Pimpri-Chinchwad, Maharashtra 411033
                                     </Typography>
                                     <Typography variant="body1" sx={ { display: 'flex', alignItems: 'center', mb: 2 } }>
                                         <PhoneIcon color="primary" sx={ { mr: 1 } } /> +91-9130008625
@@ -254,7 +254,7 @@ const ContactUs = () => {
                                         <EmailIcon color="primary" sx={ { mr: 1 } } />chaitali.parlour.pune@gmail.com
                                     </Typography>
                                     <Typography variant="body1" sx={ { display: 'flex', alignItems: 'center', mb: 3 } }>
-                                        <AccessTimeIcon color="primary" sx={ { mr: 1 } } /> Mon-Sun: 10:00 AM - 8:00 PM
+                                        <AccessTimeIcon color="primary" sx={ { mr: 1 } } /> Mon-Sun: 10:00 AM - 7:00 PM
                                     </Typography>
                                     <Box sx={ { flexGrow: 1, minHeight: { xs: 200, sm: 300 } } }>
                                         <iframe
@@ -269,10 +269,22 @@ const ContactUs = () => {
                                         ></iframe>
                                     </Box>
                                     <Box sx={ { mt: 3, display: 'flex', gap: 2, flexWrap: 'wrap', justifyContent: 'center' } }>
-                                        <Button variant="contained" color="secondary" href="https://www.google.com/maps/dir/?api=1&destination=Skylish+Avenue,+Jambe+Rd,+Tajane+Wasti,+Punawale,+Pune,+Maharashtra+411033" target="_blank" startIcon={ <DirectionsIcon /> }>
+                                        <Button
+                                            variant="contained"
+                                            color="secondary"
+                                            href="https://www.google.com/maps/place/Chaitali+Beauty+Parlour/@18.6324026,73.6604122,13z/data=!4m10!1m2!2m1!1schaitali+parlour!3m6!1s0x3bc2bb0054e62c2f:0xb5efa7b1df27a7e4!8m2!3d18.6324026!4d73.73251!15sChBjaGFpdGFsaSBwYXJsb3VykgEMYmVhdXR5X3NhbG9uqgFPEAEqFCIQY2hhaXRhbGkgcGFybG91cigAMh8QASIb73MJxoa_S8l60gBkTAwr0hWmLeQC_cMAUkohMhQQAiIQY2hhaXRhbGkgcGFybG91cuABAA!16s%2Fg%2F11xvvrgn6y?authuser=5&entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D"
+                                            target="_blank"
+                                            startIcon={ <DirectionsIcon /> }
+                                        >
                                             Get Directions
                                         </Button>
-                                        <Button variant="outlined" color="primary" href="tel:+919130008625" startIcon={ <PhoneIcon /> }>
+
+                                        <Button
+                                            variant="outlined"
+                                            color="primary"
+                                            href="tel:+919130008625"
+                                            startIcon={ <PhoneIcon /> }
+                                        >
                                             Call Now
                                         </Button>
                                     </Box>
@@ -282,7 +294,7 @@ const ContactUs = () => {
                     </Grid>
                 </Container>
             </Box>
-        </motion.div>
+        </motion.div >
     );
 };
 
