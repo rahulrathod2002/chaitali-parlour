@@ -107,7 +107,7 @@ const Footer = () => {
                     <Typography variant="body2" sx={{ opacity: 0.8 }}>
                         &copy; {new Date().getFullYear()} Chaitali Parlour. All rights reserved.
                     </Typography>
-                    <Link component={RouterLink} to="/admin" color="inherit" sx={{
+                    <Link href="/admin" color="inherit" sx={{
                         display: 'block',
                         mt: 2,
                         fontSize: '0.75rem',
