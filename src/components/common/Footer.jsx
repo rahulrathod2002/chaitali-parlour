@@ -107,19 +107,7 @@ const Footer = () => {
                     <Typography variant="body2" sx={{ opacity: 0.8 }}>
                         &copy; {new Date().getFullYear()} Chaitali Parlour. All rights reserved.
                     </Typography>
-                    <Link href="/admin" color="inherit" sx={{
-                        display: 'block',
-                        mt: 2,
-                        fontSize: '0.75rem',
-                        opacity: 0.6,
-                        textDecoration: 'none',
-                        '&:hover': {
-                            opacity: 1,
-                            textDecoration: 'underline'
-                        }
-                    }}>
-                        Admin Login
-                    </Link>
+                    
                 </Box>
             </Container>
         </Box>

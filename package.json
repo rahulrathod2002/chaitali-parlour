@@ -10,17 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "latest",
-    "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
     "@mui/x-date-pickers": "latest",
     "@react-three/drei": "latest",
     "@react-three/fiber": "latest",
-    "@unhead/react": "latest",
     "dayjs": "^1.11.13",
     "framer-motion": "latest",
-    "gray-matter": "^4.0.3",
     "nuka-carousel": "latest",
     "react": "19.1.1",
     "react-dom": "19.1.1",
