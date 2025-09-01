@@ -1,12 +1,17 @@
 import React from 'react';
 
-const SEOHead = ({ title, description, keywords, canonical }) => {
+const SEOHead = ({ title, description, keywords, canonical, structuredData }) => {
   return (
     <>
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <link rel="canonical" href={canonical} />
+      {structuredData && (
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      )}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={canonical} />
       <meta property="og:title" content={title} />

@@ -7,68 +7,63 @@ import {
     Rating,
     Box,
     useTheme,
+    Grid
 } from '@mui/material';
-import { IconButton } from '@mui/material';
-import { ArrowBackIosNew, ArrowForwardIos, FiberManualRecord, Star as StarIcon } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import { Carousel } from 'nuka-carousel';
+import { Star as StarIcon } from '@mui/icons-material';
 
 const TestimonialCarousel = ({ testimonials }) => {
     const theme = useTheme();
+
     return (
         <Carousel
             slidesToShow={ 1 }
             wrapAround
-            renderCenterLeftControls={ ({ previousSlide }) => (
-                <IconButton onClick={ previousSlide } sx={ { color: theme.palette.primary.main } }>
-                    <ArrowBackIosNew />
-                </IconButton>
-            ) }
-            renderCenterRightControls={ ({ nextSlide }) => (
-                <IconButton onClick={ nextSlide } sx={ { color: theme.palette.primary.main } }>
-                    <ArrowForwardIos />
-                </IconButton>
-            ) }
+            renderCenterLeftControls={ ({ previousSlide }) => null } // optional controls
+            renderCenterRightControls={ ({ nextSlide }) => null }
             renderBottomCenterControls={ ({ slideCount, currentSlide, goToSlide }) => (
-                <Box sx={ { display: 'flex', justifyContent: 'center', mt: 2 } }>
+                <Box sx={ { display: 'flex', justifyContent: 'center', mt: 3, gap: 1 } }>
                     { Array.from({ length: slideCount }).map((_, index) => (
-                        <IconButton
+                        <Box
                             key={ index }
                             onClick={ () => goToSlide(index) }
                             sx={ {
-                                color: currentSlide === index ? theme.palette.primary.main : theme.palette.text.secondary,
+                                width: 12,
+                                height: 12,
+                                borderRadius: '50%',
+                                backgroundColor: currentSlide === index ? theme.palette.primary.main : theme.palette.text.disabled,
+                                cursor: 'pointer',
+                                transition: '0.3s all',
                             } }
-                        >
-                            <FiberManualRecord sx={ { fontSize: 12 } } />
-                        </IconButton>
+                        />
                     )) }
                 </Box>
             ) }
         >
-            { testimonials.map((testimonial, i) => (
+            { testimonials.map((testimonial, index) => (
                 <motion.div
-                    key={ i }
-                    initial={ { opacity: 0, scale: 0.9 } }
-                    animate={ { opacity: 1, scale: 1 } }
-                    exit={ { opacity: 0, scale: 0.9 } }
-                    transition={ { duration: 0.5 } }
+                    key={ index }
+                    initial={ { opacity: 0, y: 20 } }
+                    animate={ { opacity: 1, y: 0 } }
+                    transition={ { duration: 0.6, delay: index * 0.1 } }
                 >
                     <Card
                         sx={ {
-                            maxWidth: 800,
-                            mx: 'auto',
-                            my: 6,
-                            p: { xs: 3, sm: 5 }, // responsive padding
-                            textAlign: 'center',
-                            boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+                            p: { xs: 3, sm: 5 },
                             borderRadius: 4,
-                            background: 'rgba(255,255,255,0.9)', // light glass effect
-                            backdropFilter: 'blur(6px)',
+                            minHeight: 280,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'space-between',
+                            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                            boxShadow: theme.shadows[ 6 ],
                             transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                             '&:hover': {
-                                transform: 'translateY(-6px)',
-                                boxShadow: '0 12px 32px rgba(0,0,0,0.18)',
+                                transform: 'translateY(-8px) scale(1.02)',
+                                boxShadow: theme.shadows[ 10 ],
                             },
+                            textAlign: 'center',
                         } }
                     >
                         <Avatar
@@ -94,24 +89,31 @@ const TestimonialCarousel = ({ testimonials }) => {
                             sx={ {
                                 fontStyle: 'italic',
                                 mb: 3,
-                                color: theme.palette.text.secondary,
+                                color: theme.palette.text.primary,
                                 lineHeight: 1.6,
-                                px: { xs: 1, sm: 4 }, // extra padding for readability
+                                px: { xs: 1, sm: 4 },
                             } }
                         >
                             "{ testimonial.review }"
                         </Typography>
-                        <Typography
-                            variant="h6"
-                            color="primary"
-                            sx={ {
-                                fontFamily: 'Cormorant Garamond',
-                                fontWeight: 600,
-                                letterSpacing: 0.5,
-                            } }
-                        >
-                            - { testimonial.name }
-                        </Typography>
+                        <Box>
+                            <Typography
+                                variant="h6"
+                                color={ theme.palette.primary.main }
+                                sx={ {
+                                    fontFamily: 'Cormorant Garamond',
+                                    fontWeight: 600,
+                                    letterSpacing: 0.5,
+                                } }
+                            >
+                                - { testimonial.name }
+                            </Typography>
+                            { testimonial.designation && (
+                                <Typography variant="body2" color="text.secondary">
+                                    { testimonial.designation }
+                                </Typography>
+                            ) }
+                        </Box>
                     </Card>
                 </motion.div>
             )) }

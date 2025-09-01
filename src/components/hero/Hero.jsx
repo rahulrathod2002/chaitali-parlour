@@ -1,12 +1,13 @@
 import React, { Suspense } from 'react';
-import { Box, Container, useTheme } from '@mui/material';
+import { Box, Container, useTheme, useMediaQuery } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import AnimatedText from './AnimatedText';
 import ThreeDAccent from './ThreeDAccent';
 import CallToActions from '../shared/CallToActions';
-import parlourBanner from '../../assets/images/parlour-banner.jpg'; // Import parlourBanner
+// import parlourBannerJpg from '../../public/parlour-banner.jpg'; // Import parlourBanner JPG
+// import parlourBannerPng from '../../public/parlour-banner.png'; // Import parlourBanner PNG
 
 const Hero = () => {
     const theme = useTheme();
@@ -36,7 +37,10 @@ const Hero = () => {
                     left: 0,
                     width: '100%',
                     height: '100%',
-                    backgroundImage: `url(${parlourBanner})`,
+                    backgroundImage: {
+                        xs: `url(/parlour-banner.png)`, // Mobile
+                        md: `url(/parlour-banner.jpg)`, // Desktop
+                    },
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundAttachment: 'fixed',
@@ -50,7 +54,7 @@ const Hero = () => {
                     left: 0,
                     width: '100%',
                     height: '100%',
-                    backgroundColor: 'rgba(0, 0, 0, 0.6)', // Dark overlay for text readability
+                    backgroundColor: 'rgba(0, 0, 0, 0.7)', // Dark overlay for text readability
                     zIndex: 1, // Overlay layer
                 } }
             />
@@ -75,7 +79,7 @@ const Hero = () => {
                 </Canvas>
             </Box>
             <Container maxWidth="md" sx={ { position: 'relative', zIndex: 2, textAlign: 'center' } }>
-                <AnimatedText text="Chaitali Parlour" color="white" />
+                <AnimatedText text="Best Beauty Parlour in Pune – Chaitali Beauty Parlour" color="white" />
                 <motion.p
                     initial={ { opacity: 0, y: 20 } }
                     animate={ { opacity: 1, y: 0 } }

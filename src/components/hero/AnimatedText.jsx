@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '@mui/material';
 
-const AnimatedText = ({ text, delay = 0 }) => {
+const AnimatedText = ({ text, delay = 0, color }) => {
     const words = text.split(" ");
     const theme = useTheme();
     return (
@@ -22,7 +22,7 @@ const AnimatedText = ({ text, delay = 0 }) => {
                 textAlign: 'center',
                 fontFamily: 'Cormorant Garamond',
                 fontWeight: 700,
-                color: theme.palette.primary.contrastText,
+                color: color, // Use the passed color prop
                 lineHeight: 1.1,
                 marginBottom: theme.spacing(2),
             } }

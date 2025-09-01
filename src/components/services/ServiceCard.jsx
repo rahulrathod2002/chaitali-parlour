@@ -51,7 +51,7 @@ const ServiceCard = ({ service }) => {
                     sx={ { objectFit: 'cover' } }
                 />
                 <CardContent sx={ { flexGrow: 1 } }>
-                    <Typography gutterBottom variant="h5" component="div" sx={ { fontFamily: 'Cormorant Garamond' } }>
+                    <Typography gutterBottom variant="h3" component="h3" sx={ { fontFamily: 'Cormorant Garamond' } }>
                         { service.name }
                     </Typography>
                     <Typography variant="body2" color="text.secondary">

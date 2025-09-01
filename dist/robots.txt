@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://chaitali-parlour.netlify.app/sitemap.xml
