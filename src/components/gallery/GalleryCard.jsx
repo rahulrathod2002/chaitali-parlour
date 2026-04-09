@@ -18,18 +18,17 @@ const GalleryCard = ({ image, onClick }) => {
                 onClick={ () => onClick(image) }
                 sx={ {
                     cursor: 'pointer',
-                    borderRadius: 3,
+                    height: '100%',
                     overflow: 'hidden',
                     position: 'relative',
-                    boxShadow: theme.shadows[ 1 ],
+                    boxShadow: theme.shadows[ 2 ],
                 } }
             >
                 <CardMediaWithFallback
                     component="img"
-                    height="300"
                     src={ image.src }
                     alt={ image.alt }
-                    sx={ { objectFit: 'cover' } }
+                    sx={ { objectFit: 'cover', height: 320, width: '100%' } }
                 />
                 <Box
                     sx={ {
@@ -39,7 +38,7 @@ const GalleryCard = ({ image, onClick }) => {
                         right: 0,
                         bgcolor: 'rgba(0,0,0,0.5)',
                         color: 'white',
-                        p: 1.5,
+                        p: 1.75,
                         transform: 'translateY(100%)',
                         transition: 'transform 0.3s ease-in-out',
                         '.MuiCard-root:hover &': {
@@ -47,7 +46,7 @@ const GalleryCard = ({ image, onClick }) => {
                         },
                     } }
                 >
-                    <Typography variant="body2">{ image.alt }</Typography>
+                    <Typography variant="body1" sx={ { fontWeight: 600 } }>{ image.alt }</Typography>
                     <Box sx={ { display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 0.5 } }>
                         { image.tags.map((tag, tagIndex) => (
                             <Chip key={ tagIndex } label={ tag } size="small" sx={ { bgcolor: theme.palette.primary.light, color: theme.palette.text.primary } } />

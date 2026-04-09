@@ -7,11 +7,12 @@
 /coverage
 
 # Production
-# /dist
+/dist
 /build
 
 # Misc
 .DS_Store
+.env
 .env.local
 .env.*.local
 npm-debug.log*
@@ -29,3 +30,6 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Vite cache
+node_modules/.vite

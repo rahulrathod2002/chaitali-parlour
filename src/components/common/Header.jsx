@@ -11,7 +11,8 @@ import {
     useMediaQuery,
     useTheme,
 } from '@mui/material';
-import { Menu as MenuIcon, EventAvailable as EventAvailableIcon } from '@mui/icons-material';
+import MenuIcon from '@mui/icons-material/Menu';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
@@ -35,14 +36,16 @@ const Header = () => {
         setMobileOpen(!mobileOpen);
     };
 
+    const handleNavClick = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     const navItems = [
         { name: 'Home', path: '/' },
         { name: 'About Us', path: '/about' },
         { name: 'Services', path: '/services' },
         { name: 'Gallery', path: '/gallery' },
         { name: 'Testimonials', path: '/testimonials' },
-        { name: 'Blog', path: '/blog' },
-        { name: 'Offers', path: '/offers' },
         { name: 'Contact Us', path: '/contact' },
     ];
 
@@ -53,7 +56,9 @@ const Header = () => {
         color: isHeaderTransparent ? 'white' : theme.palette.text.primary,
         fontWeight: 600,
         textDecoration: 'none',
-        p: '8px 16px',
+        px: 1.75,
+        py: 1,
+        borderRadius: '999px',
         '&::after': {
             content: '""',
             position: 'absolute',
@@ -69,7 +74,7 @@ const Header = () => {
             width: 'calc(100% - 32px)',
         },
         '&:hover': {
-            backgroundColor: 'transparent', // prevent default hover background
+            backgroundColor: isHeaderTransparent ? 'rgba(255, 255, 255, 0.08)' : theme.palette.primary.soft,
             color: isHeaderTransparent ? 'white' : theme.palette.primary.main,
         },
         '&.active': {
@@ -84,9 +89,10 @@ const Header = () => {
         <AppBar
             position="fixed"
             sx={{
-                bgcolor: isHeaderTransparent ? 'transparent' : 'rgba(255, 255, 255, 0.95)',
+                bgcolor: isHeaderTransparent ? 'transparent' : 'rgba(255, 251, 249, 0.92)',
                 backdropFilter: isHeaderTransparent ? 'none' : 'blur(10px)',
-                boxShadow: isHeaderTransparent ? 'none' : theme.shadows[1],
+                boxShadow: isHeaderTransparent ? 'none' : theme.shadows[3],
+                borderBottom: isHeaderTransparent ? 'none' : `1px solid ${theme.palette.divider}`,
                 transition: 'background-color 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
                 color: isHeaderTransparent ? 'white' : theme.palette.text.primary,
             }}
@@ -97,6 +103,7 @@ const Header = () => {
                         variant="h6"
                         component={RouterLink}
                         to="/"
+                        onClick={handleNavClick}
                         sx={{
                             flexGrow: 1,
                             fontFamily: 'Cormorant Garamond',
@@ -104,6 +111,7 @@ const Header = () => {
                             color: isHeaderTransparent ? 'white' : theme.palette.primary.main,
                             textDecoration: 'none',
                             fontSize: { xs: '1.5rem', md: '2rem' },
+                            letterSpacing: '0.03em',
                         }}
                     >
                         Chaitali Parlour
@@ -126,6 +134,7 @@ const Header = () => {
                                     component={NavLink}
                                     to={item.path}
                                     end={item.path === '/'}
+                                    onClick={handleNavClick}
                                     sx={navLinkStyles}
                                 >
                                     {item.name}
@@ -137,7 +146,8 @@ const Header = () => {
                                 component={RouterLink}
                                 to="/book"
                                 startIcon={<EventAvailableIcon />}
-                                sx={{ ml: 2 }}
+                                onClick={handleNavClick}
+                                sx={{ ml: 2, boxShadow: theme.shadows[4] }}
                             >
                                 Book Now
                             </Button>
@@ -159,22 +169,34 @@ const Header = () => {
                             left: 0,
                             width: '100%',
                             backgroundColor: theme.palette.background.paper,
-                            boxShadow: theme.shadows[2],
+                            boxShadow: theme.shadows[4],
                             zIndex: 999,
+                            borderBottom: `1px solid ${theme.palette.divider}`,
                         }}
                     >
                         <Box sx={{ p: 2, display: 'flex', flexDirection: 'column', gap: 1 }}>
                             {navItems.map((item) => (
                                 <Button
                                     key={item.name}
-                                    component={RouterLink}
+                                    component={NavLink}
                                     to={item.path}
-                                    onClick={handleDrawerToggle}
+                                    end={item.path === '/'}
+                                    onClick={() => {
+                                        handleDrawerToggle();
+                                        handleNavClick();
+                                    }}
                                     sx={{
                                         color: theme.palette.text.primary,
                                         justifyContent: 'flex-start',
+                                        borderRadius: 3,
+                                        px: 2,
+                                        py: 1.25,
+                                        '&.active': {
+                                            color: theme.palette.primary.main,
+                                            backgroundColor: theme.palette.primary.soft,
+                                        },
                                         '&:hover': {
-                                            backgroundColor: theme.palette.primary.light,
+                                            backgroundColor: theme.palette.primary.soft,
                                         },
                                     }}
                                 >
@@ -187,7 +209,10 @@ const Header = () => {
                                 component={RouterLink}
                                 to="/book"
                                 startIcon={<EventAvailableIcon />}
-                                onClick={handleDrawerToggle}
+                                onClick={() => {
+                                    handleDrawerToggle();
+                                    handleNavClick();
+                                }}
                                 sx={{ mt: 2 }}
                             >
                                 Book Now

@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
-import { Container, Typography, Box, Grid, Button, useTheme, Card, CardContent, CircularProgress } from '@mui/material';
+import { Box, Button, Card, CardContent, CircularProgress, Container, Grid, Typography, useTheme } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
-import { InfoOutlined as InfoOutlinedIcon } from '@mui/icons-material';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { motion } from 'framer-motion';
 import SEOHead from '../components/common/SEOHead';
 import Hero from '../components/hero/Hero';
@@ -9,37 +9,57 @@ import ServiceCard from '../components/services/ServiceCard';
 import { servicesData } from '../data/services';
 import { testimonialsData } from '../data/testimonials';
 import offersFromFile from '../data/offers.json';
-const offersData = offersFromFile.offers;
 import CardMediaWithFallback from '../components/common/CardMediaWithFallback';
-import { staggerContainer, fadeIn } from '../utils/motion'; // Import reusable animation variants
-// import parlourBannerJpg from '../../public/parlour-banner.jpg'; // Import parlourBanner JPG
-// import parlourBannerPng from '../../public/parlour-banner.png'; // Import parlourBanner PNG
+import { fadeIn, staggerContainer } from '../utils/motion';
 
-// Lazy load components that are below the fold
+const offersData = offersFromFile.offers;
+
 const TestimonialCarousel = lazy(() => import('../components/testimonials/TestimonialCarousel'));
 const TrustBadges = lazy(() => import('../components/common/TrustBadges'));
 
-// New component for the Offer Card
+const sectionSx = {
+    py: { xs: 8, md: 11 },
+};
+
 const OfferCard = ({ offer, index }) => {
     const theme = useTheme();
+
     return (
         <motion.div
-            variants={ fadeIn("up", "tween", index * 0.1, 0.6) }
+            variants={ fadeIn('up', 'tween', index * 0.1, 0.6) }
             initial="hidden"
             whileInView="show"
             viewport={ { once: true, amount: 0.3 } }
+            style={ { height: '100%' } }
         >
             <Card
                 sx={ {
+                    height: '100%',
                     display: 'flex',
                     flexDirection: { xs: 'column', sm: 'row' },
-                    boxShadow: theme.shadows[ 6 ], // Increased shadow for more depth
-                    borderRadius: 3,
                     overflow: 'hidden',
-                    transition: 'transform 0.3s ease-in-out',
-                    '&:hover': {
-                        transform: 'translateY(-10px) scale(1.02)', // More pronounced lift and scale
-                        boxShadow: theme.shadows[ 10 ],
+                    position: 'relative',
+                    borderRadius: 4,
+                    border: `1px solid ${theme.palette.divider}`,
+                    boxShadow: theme.shadows[ 4 ],
+                    background: `linear-gradient(145deg, ${theme.palette.background.paper} 0%, ${theme.palette.surface.muted} 52%, rgba(255,255,255,0.96) 100%)`,
+                    '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(184,92,122,0.05) 45%, rgba(216,164,143,0.08) 100%)',
+                        pointerEvents: 'none',
+                    },
+                    '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        top: 18,
+                        right: 18,
+                        width: 110,
+                        height: 110,
+                        borderRadius: '50%',
+                        background: 'radial-gradient(circle, rgba(184,92,122,0.16) 0%, rgba(184,92,122,0) 72%)',
+                        pointerEvents: 'none',
                     },
                 } }
             >
@@ -47,32 +67,108 @@ const OfferCard = ({ offer, index }) => {
                     component="img"
                     loading="lazy"
                     sx={ {
-                        width: { xs: '100%', sm: 180 },
-                        height: { xs: 150, sm: 'auto' },
+                        width: { xs: '100%', sm: 220, md: 240 },
+                        minWidth: { sm: 220, md: 240 },
+                        height: { xs: 220, sm: 'auto' },
+                        alignSelf: 'stretch',
                         objectFit: 'cover',
+                        filter: 'saturate(1.05)',
                     } }
                     src={ offer.image }
                     alt={ `${offer.title} - Chaitali Beauty Parlour Offer` }
                 />
-                <CardContent sx={ { flex: '1 0 auto', p: 3 } }>
-                    <Typography variant="h5" sx={ { fontFamily: 'Cormorant Garamond' } }>
-                        { offer.title }
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={ { mb: 1 } }>
-                        { offer.description }
-                    </Typography>
-                    { offer.expiry && (
-                        <Typography variant="caption" color="error" sx={ { display: 'block', mb: 1, fontWeight: 'bold' } }>
-                            Expires: { new Date(offer.expiry).toLocaleDateString() }
+                <CardContent
+                    sx={ {
+                        flex: '1 1 auto',
+                        width: '100%',
+                        minWidth: 0,
+                        p: { xs: 3, md: 4 },
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        position: 'relative',
+                        zIndex: 1,
+                    } }
+                >
+                    <Box>
+                        <Typography
+                            variant="overline"
+                            sx={ {
+                                display: 'inline-block',
+                                mb: 2,
+                                px: 1.5,
+                                py: 0.75,
+                                borderRadius: '999px',
+                                backgroundColor: theme.palette.primary.soft,
+                                border: `1px solid ${theme.palette.divider}`,
+                                color: theme.palette.primary.main,
+                                fontWeight: 700,
+                                letterSpacing: '0.16em',
+                            } }
+                        >
+                            Special Offer
                         </Typography>
-                    ) }
+                        <Typography
+                            variant="h4"
+                            sx={ {
+                                fontFamily: 'Cormorant Garamond',
+                                mb: 1.5,
+                                lineHeight: 1.05,
+                                fontSize: { xs: '1.8rem', md: '2.15rem' },
+                            } }
+                        >
+                            { offer.title }
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary" sx={ { lineHeight: 1.8, mb: 2 } }>
+                            { offer.description }
+                        </Typography>
+                        <Box
+                            sx={ {
+                                display: 'grid',
+                                gridTemplateColumns: { xs: '1fr', md: 'repeat(2, minmax(0, 1fr))' },
+                                gap: 1.25,
+                                width: '100%',
+                            } }
+                        >
+                            <Box
+                                sx={ {
+                                    px: 1.5,
+                                    py: 1.1,
+                                    borderRadius: 3,
+                                    backgroundColor: 'rgba(255,255,255,0.72)',
+                                    border: `1px solid ${theme.palette.divider}`,
+                                } }
+                            >
+                                <Typography variant="caption" sx={ { color: theme.palette.primary.main, fontWeight: 700, letterSpacing: '0.08em' } }>
+                                    PREMIUM CARE
+                                </Typography>
+                            </Box>
+                            <Box
+                                sx={ {
+                                    px: 1.5,
+                                    py: 1.1,
+                                    borderRadius: 3,
+                                    backgroundColor: 'rgba(255,255,255,0.72)',
+                                    border: `1px solid ${theme.palette.divider}`,
+                                } }
+                            >
+                                <Typography variant="caption" sx={ { color: theme.palette.primary.main, fontWeight: 700, letterSpacing: '0.08em' } }>
+                                    LIMITED SPOTS
+                                </Typography>
+                            </Box>
+                        </Box>
+                    </Box>
                     <Button
                         variant="contained"
                         color="primary"
-                        size="small"
                         component={ RouterLink }
                         to={ offer.link }
-                        sx={ { mt: 'auto' } } // Pushes button to the bottom
+                        sx={ {
+                            mt: 3.5,
+                            alignSelf: 'flex-start',
+                            px: 3.5,
+                            py: 1.3,
+                        } }
                     >
                         { offer.cta }
                     </Button>
@@ -86,78 +182,91 @@ const Home = () => {
     const theme = useTheme();
 
     return (
-        <motion.div
-            initial="hidden"
-            animate="show"
-            variants={ staggerContainer(0.1, 0.2) }
-        >
+        <motion.div initial="hidden" animate="show" variants={ staggerContainer(0.1, 0.2) }>
             <SEOHead
-                title="Chaitali Beauty Parlour – Best Beauty Parlour in Pune | Bridal Makeup & Facials"
+                title="Chaitali Beauty Parlour - Best Beauty Parlour in Pune | Bridal Makeup & Facials"
                 description="Looking for the best beauty parlour near me? Visit Chaitali Beauty Parlour in Pune for bridal makeup, facials, hair styling & more."
                 keywords="best parlour near me, Chaitali Beauty Parlour, ladies parlour Pune"
                 canonical="https://chaitali-parlour.netlify.app/"
                 structuredData={ {
-                    "@context": "http://schema.org",
-                    "@type": "BeautySalon",
-                    "name": "Chaitali Beauty Parlour",
-                    "alternateName": "Chaitali Parlour",
-                    "image": "https://chaitali-parlour.netlify.app/parlour-banner.jpg",
-                    "address": {
-                        "@type": "PostalAddress",
-                        "streetAddress": "1st Floor Dnyandeep Bungalow, Opposite Brick Castle, Behind Bhosale Garden, Savtanagari, Hadapsar",
-                        "addressLocality": "Pune",
-                        "addressRegion": "Maharashtra",
-                        "postalCode": "411028",
-                        "addressCountry": "IN"
+                    '@context': 'http://schema.org',
+                    '@type': 'BeautySalon',
+                    name: 'Chaitali Beauty Parlour',
+                    alternateName: 'Chaitali Parlour',
+                    image: 'https://chaitali-parlour.netlify.app/parlour-banner.jpg',
+                    address: {
+                        '@type': 'PostalAddress',
+                        streetAddress: '1st Floor Dnyandeep Bungalow, Opposite Brick Castle, Behind Bhosale Garden, Savtanagari, Hadapsar',
+                        addressLocality: 'Pune',
+                        addressRegion: 'Maharashtra',
+                        postalCode: '411028',
+                        addressCountry: 'IN',
                     },
-                    "geo": {
-                        "@type": "GeoCoordinates",
-                        "latitude": 18.6324026,
-                        "longitude": 73.73251
+                    geo: {
+                        '@type': 'GeoCoordinates',
+                        latitude: 18.6324026,
+                        longitude: 73.73251,
                     },
-                    "url": "https://chaitali-parlour.netlify.app/",
-                    "telephone": "+919890818752",
-                    "openingHoursSpecification": [
+                    url: 'https://chaitali-parlour.netlify.app/',
+                    telephone: '+919890818752',
+                    openingHoursSpecification: [
                         {
-                            "@type": "OpeningHoursSpecification",
-                            "dayOfWeek": [
-                                "Monday",
-                                "Tuesday",
-                                "Wednesday",
-                                "Thursday",
-                                "Friday",
-                                "Saturday",
-                                "Sunday"
-                            ],
-                            "opens": "10:00",
-                            "closes": "21:00"
-                        }
+                            '@type': 'OpeningHoursSpecification',
+                            dayOfWeek: [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ],
+                            opens: '10:00',
+                            closes: '21:00',
+                        },
                     ],
-                    "hasMap": "https://maps.app.goo.gl/vjFdhjkNNBPe7cSg9"
+                    hasMap: 'https://maps.app.goo.gl/vjFdhjkNNBPe7cSg9',
                 } }
             />
+
             <Hero />
-            <Container maxWidth="lg" sx={ { my: 8 } }>
-                <motion.div
-                    variants={ fadeIn("up", "tween", 0, 0.7) }
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={ { once: true, amount: 0.2 } }
-                >
-                    <Typography variant="h2" align="center" gutterBottom sx={ { color: theme.palette.text.primary } }>
-                        Our Signature Services
-                    </Typography>
-                    <Typography variant="h6" align="center" color="text.secondary" sx={ { mb: 4, fontWeight: 'normal' } }>
-                        Expert skin care and facial services in Pune, delivered at the best ladies parlour near you.
-                    </Typography>
-                </motion.div>
-                <Box sx={ { display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 4 } }>
-                    { servicesData.slice(0, 4).map((service, index) => (
-                        <ServiceCard key={ index } service={ service } />
-                    )) }
-                </Box>
-                <Box sx={ { mt: 6, textAlign: 'center' } }>
-                    <motion.div whileHover={ { scale: 1.05 } } whileTap={ { scale: 0.95 } }>
+
+            <Box sx={ sectionSx }>
+                <Container maxWidth="lg">
+                    <motion.div variants={ fadeIn('up', 'tween', 0, 0.7) } initial="hidden" whileInView="show" viewport={ { once: true, amount: 0.2 } }>
+                        <Typography
+                            variant="overline"
+                            sx={ {
+                                display: 'block',
+                                textAlign: 'center',
+                                color: theme.palette.primary.main,
+                                fontWeight: 700,
+                                letterSpacing: '0.18em',
+                                mb: 1.5,
+                            } }
+                        >
+                            Signature Care
+                        </Typography>
+                        <Typography variant="h2" align="center" gutterBottom sx={ { color: theme.palette.text.primary, mb: 2 } }>
+                            Our Signature Services
+                        </Typography>
+                        <Typography variant="h6" align="center" color="text.secondary" sx={ { mb: 6, fontWeight: 'normal', maxWidth: 760, mx: 'auto', lineHeight: 1.75 } }>
+                            Expert skin care, grooming, and bridal-ready beauty services delivered with the comfort, polish, and spacing rhythm of a premium studio experience.
+                        </Typography>
+                    </motion.div>
+
+                    <Box
+                        sx={ {
+                            display: 'grid',
+                            gridTemplateColumns: {
+                                xs: '1fr',
+                                sm: 'repeat(2, minmax(0, 1fr))',
+                                lg: 'repeat(3, minmax(0, 1fr))',
+                            },
+                            gap: 4,
+                            alignItems: 'stretch',
+                        } }
+                    >
+                        { servicesData.slice(0, 6).map((service, index) => (
+                            <Box key={ index } sx={ { minWidth: 0 } }>
+                                <ServiceCard service={ service } />
+                            </Box>
+                        )) }
+                    </Box>
+
+                    <Box sx={ { mt: 6, textAlign: 'center' } }>
                         <Button
                             variant="outlined"
                             color="primary"
@@ -168,84 +277,92 @@ const Home = () => {
                         >
                             View All Services
                         </Button>
-                    </motion.div>
-                </Box>
-            </Container>
+                    </Box>
+                </Container>
+            </Box>
 
-            <Box sx={ {
-                position: 'relative',
-                py: 8,
-                backgroundImage: {
-                    xs: `url(/parlour-banner.png)`,
-                    md: `url(/parlour-banner.jpg)`,
-                },
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundAttachment: 'fixed',
-                '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                    zIndex: 1,
-                },
-            } }>
+            <Box
+                sx={ {
+                    ...sectionSx,
+                    position: 'relative',
+                    background: `linear-gradient(180deg, ${theme.palette.surface.dark} 0%, ${theme.palette.surface.deep} 100%)`,
+                    color: theme.palette.primary.contrastText,
+                    overflow: 'hidden',
+                } }
+            >
+                <Box
+                    sx={ {
+                        position: 'absolute',
+                        inset: 0,
+                        backgroundImage: {
+                            xs: 'url(/parlour-banner.png)',
+                            md: 'url(/parlour-banner.jpg)',
+                        },
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        opacity: 0.14,
+                    } }
+                />
                 <Suspense fallback={ <Box sx={ { display: 'flex', justifyContent: 'center', p: 4 } }><CircularProgress color="primary" /></Box> }>
-                    <Container maxWidth="lg" sx={ { position: 'relative', zIndex: 2, pb: 8 } }>
-                        <motion.div
-                            variants={ fadeIn("up", "tween", 0, 0.7) }
-                            initial="hidden"
-                            whileInView="show"
-                            viewport={ { once: true, amount: 0.2 } }
-                        >
-                            <Typography variant="h2" align="center" gutterBottom sx={ { color: 'white', mb: 6 } }>
+                    <Container maxWidth="lg" sx={ { position: 'relative', zIndex: 1 } }>
+                        <motion.div variants={ fadeIn('up', 'tween', 0, 0.7) } initial="hidden" whileInView="show" viewport={ { once: true, amount: 0.2 } }>
+                            <Typography
+                                variant="overline"
+                                sx={ {
+                                    display: 'block',
+                                    textAlign: 'center',
+                                    color: theme.palette.secondary.light,
+                                    fontWeight: 700,
+                                    letterSpacing: '0.18em',
+                                    mb: 1.5,
+                                } }
+                            >
+                                Real Reviews
+                            </Typography>
+                            <Typography variant="h2" align="center" gutterBottom sx={ { color: 'white', mb: 2 } }>
                                 What Our Clients Say
+                            </Typography>
+                            <Typography align="center" sx={ { color: 'rgba(255,255,255,0.76)', maxWidth: 760, mx: 'auto', mb: 6, lineHeight: 1.75 } }>
+                                Genuine Google reviews from clients who visited Chaitali Beauty Parlour and loved the care, cleanliness, and final results.
                             </Typography>
                         </motion.div>
                         <TestimonialCarousel testimonials={ testimonialsData } />
                     </Container>
-                    <Box sx={ { color: 'white', position: 'relative', zIndex: 2 } }>
+                    <Box sx={ { color: 'white', position: 'relative', zIndex: 1, mt: 7 } }>
                         <TrustBadges />
                     </Box>
                 </Suspense>
             </Box>
 
-            <Container maxWidth="lg" sx={ { my: 8 } }>
-                <motion.div
-                    variants={ fadeIn("up", "tween", 0, 0.7) }
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={ { once: true, amount: 0.2 } }
-                >
-                    <Typography variant="h2" align="center" gutterBottom sx={ { color: theme.palette.text.primary, mb: 4 } }>
-                        Special Offers
-                    </Typography>
-                </motion.div>
-                <Grid container spacing={ 4 } justifyContent="center">
-                    { offersData.slice(0, 2).map((offer, index) => (
-                        <Grid item xs={ 12 } md={ 6 } key={ index }>
-                            <OfferCard offer={ offer } index={ index } />
-                        </Grid>
-                    )) }
-                </Grid>
-                <Box sx={ { mt: 6, textAlign: 'center' } }>
-                    <motion.div whileHover={ { scale: 1.05 } } whileTap={ { scale: 0.95 } }>
-                        <Button
-                            variant="outlined"
-                            color="primary"
-                            component={ RouterLink }
-                            to="/offers"
-                            size="large"
-                            endIcon={ <InfoOutlinedIcon /> }
+            <Box sx={ { ...sectionSx, backgroundColor: theme.palette.surface.muted } }>
+                <Container maxWidth="lg">
+                    <motion.div variants={ fadeIn('up', 'tween', 0, 0.7) } initial="hidden" whileInView="show" viewport={ { once: true, amount: 0.2 } }>
+                        <Typography
+                            variant="overline"
+                            sx={ {
+                                display: 'block',
+                                textAlign: 'center',
+                                color: theme.palette.primary.main,
+                                fontWeight: 700,
+                                letterSpacing: '0.18em',
+                                mb: 1.5,
+                            } }
                         >
-                            View All Offers
-                        </Button>
+                            Limited Time
+                        </Typography>
+                        <Typography variant="h2" align="center" gutterBottom sx={ { color: theme.palette.text.primary, mb: 6 } }>
+                            Special Offers
+                        </Typography>
                     </motion.div>
-                </Box>
-            </Container>
+                    <Grid container spacing={ 4 } sx={ { justifyContent: 'center' } }>
+                        { offersData.slice(0, 2).map((offer, index) => (
+                            <Grid size={{ xs: 12, md: 6 }} key={ index }>
+                                <OfferCard offer={ offer } index={ index } />
+                            </Grid>
+                        )) }
+                    </Grid>
+                </Container>
+            </Box>
         </motion.div>
     );
 };

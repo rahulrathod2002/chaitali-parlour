@@ -12,15 +12,13 @@ import {
     useTheme,
     InputAdornment,
 } from '@mui/material';
-import {
-    EventAvailable as EventAvailableIcon,
-    WhatsApp as WhatsAppIcon,
-    PersonOutline as PersonOutlineIcon,
-    PhoneOutlined as PhoneOutlinedIcon,
-    EmailOutlined as EmailOutlinedIcon,
-    BookOnlineOutlined as BookOnlineOutlinedIcon,
-    NotesOutlined as NotesOutlinedIcon,
-} from '@mui/icons-material';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutlineOutlined';
+import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import BookOnlineOutlinedIcon from '@mui/icons-material/BookOnlineOutlined';
+import NotesOutlinedIcon from '@mui/icons-material/NotesOutlined';
 import { DatePicker, TimePicker } from '@mui/x-date-pickers';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -174,7 +172,7 @@ const BookAppointment = () => {
                         } }>
                             <form onSubmit={ handleSubmit }>
                                 <Grid container spacing={ 3 }>
-                                    <Grid item xs={ 12 }>
+                                    <Grid size={{ xs: 12 }}>
                                         <motion.div variants={formVariants} initial="hidden" animate="visible" custom={0}>
                                             <TextField
                                                 fullWidth
@@ -190,7 +188,7 @@ const BookAppointment = () => {
                                             />
                                         </motion.div>
                                     </Grid>
-                                    <Grid item xs={ 12 } sm={ 6 }>
+                                    <Grid size={{ xs: 12, sm: 6 }}>
                                         <motion.div variants={formVariants} initial="hidden" animate="visible" custom={1}>
                                             <TextField
                                                 fullWidth
@@ -208,7 +206,7 @@ const BookAppointment = () => {
                                             />
                                         </motion.div>
                                     </Grid>
-                                    <Grid item xs={ 12 } sm={ 6 }>
+                                    <Grid size={{ xs: 12, sm: 6 }}>
                                         <motion.div variants={formVariants} initial="hidden" animate="visible" custom={2}>
                                             <TextField
                                                 fullWidth
@@ -225,7 +223,7 @@ const BookAppointment = () => {
                                             />
                                         </motion.div>
                                     </Grid>
-                                    <Grid item xs={ 12 }>
+                                    <Grid size={{ xs: 12 }}>
                                         <motion.div variants={formVariants} initial="hidden" animate="visible" custom={3}>
                                             <TextField
                                                 fullWidth
@@ -248,7 +246,7 @@ const BookAppointment = () => {
                                             </TextField>
                                         </motion.div>
                                     </Grid>
-                                    <Grid item xs={ 12 } sm={ 6 }>
+                                    <Grid size={{ xs: 12, sm: 6 }}>
                                         <motion.div variants={formVariants} initial="hidden" animate="visible" custom={4}>
                                             <LocalizationProvider dateAdapter={ AdapterDayjs }>
                                                 <DatePicker
@@ -260,7 +258,7 @@ const BookAppointment = () => {
                                             </LocalizationProvider>
                                         </motion.div>
                                     </Grid>
-                                    <Grid item xs={ 12 } sm={ 6 }>
+                                    <Grid size={{ xs: 12, sm: 6 }}>
                                         <motion.div variants={formVariants} initial="hidden" animate="visible" custom={5}>
                                             <LocalizationProvider dateAdapter={ AdapterDayjs }>
                                                 <TimePicker
@@ -272,7 +270,7 @@ const BookAppointment = () => {
                                             </LocalizationProvider>
                                         </motion.div>
                                     </Grid>
-                                    <Grid item xs={ 12 }>
+                                    <Grid size={{ xs: 12 }}>
                                         <motion.div variants={formVariants} initial="hidden" animate="visible" custom={6}>
                                             <TextField
                                                 fullWidth
@@ -289,7 +287,7 @@ const BookAppointment = () => {
                                             />
                                         </motion.div>
                                     </Grid>
-                                    <Grid item xs={ 12 }>
+                                    <Grid size={{ xs: 12 }}>
                                         <motion.div variants={formVariants} initial="hidden" animate="visible" custom={7} whileHover={{scale: 1.02}} whileTap={{scale: 0.98}}>
                                             <Button
                                                 type="submit"
@@ -305,7 +303,7 @@ const BookAppointment = () => {
                                             </Button>
                                         </motion.div>
                                     </Grid>
-                                    <Grid item xs={ 12 } sx={ { textAlign: 'center' } }>
+                                    <Grid size={{ xs: 12 }} sx={ { textAlign: 'center' } }>
                                         <Typography variant="body2" color="text.secondary" sx={ { my: 2 } }>
                                             OR
                                         </Typography>

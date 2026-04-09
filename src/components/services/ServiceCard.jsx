@@ -30,9 +30,7 @@ const ServiceCard = ({ service }) => {
             viewport={ { once: true, amount: 0.3 } }
             transition={ { duration: 0.5 } }
             style={ {
-                flex: '1 1 calc(33% - 32px)', // For responsive grid
-                minWidth: '280px',
-                maxWidth: '380px',
+                height: '100%',
             } }
         >
             <Card
@@ -40,7 +38,7 @@ const ServiceCard = ({ service }) => {
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
-                    boxShadow: theme.shadows[ 1 ],
+                    boxShadow: theme.shadows[ 2 ],
                 } }
             >
                 <CardMediaWithFallback
@@ -48,13 +46,13 @@ const ServiceCard = ({ service }) => {
                     height="200"
                     src={ service.image }
                     alt={ `${service.name} service at Chaitali Beauty Parlour in Pune` }
-                    sx={ { objectFit: 'cover' } }
+                    sx={ { objectFit: 'cover', height: 240 } }
                 />
-                <CardContent sx={ { flexGrow: 1 } }>
-                    <Typography gutterBottom variant="h3" component="h3" sx={ { fontFamily: 'Cormorant Garamond' } }>
+                <CardContent sx={ { flexGrow: 1, p: { xs: 3, md: 4 } } }>
+                    <Typography gutterBottom variant="h3" component="h3" sx={ { fontFamily: 'Cormorant Garamond', fontSize: { xs: '1.75rem', md: '2rem' } } }>
                         { service.name }
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.secondary" sx={ { lineHeight: 1.75 } }>
                         { service.description }
                     </Typography>
                     <Typography variant="body1" color="primary" sx={ { mt: 1, fontWeight: 'bold' } }>
@@ -66,7 +64,7 @@ const ServiceCard = ({ service }) => {
                         )) }
                     </Box>
                 </CardContent>
-                <Box sx={ { p: 2, pt: 0 } }>
+                <Box sx={ { p: 3, pt: 0 } }>
                     <Button
                         variant="contained"
                         color="primary"

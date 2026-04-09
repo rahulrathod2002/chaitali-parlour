@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Button, Box, useTheme } from '@mui/material';
-import {
-    EventAvailable as EventAvailableIcon,
-    Phone as PhoneIcon,
-    WhatsApp as WhatsAppIcon,
-} from '@mui/icons-material';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import PhoneIcon from '@mui/icons-material/Phone';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { motion } from 'framer-motion';
 
 const CallToActions = ({ justifyContent = 'center', sx = {} }) => {

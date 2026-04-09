@@ -93,7 +93,7 @@ const Services = () => {
                                     variant={filter === cat ? 'contained' : 'outlined'}
                                     color="primary"
                                     onClick={() => setFilter(cat)}
-                                    sx={{ borderRadius: 50 }}
+                                    sx={{ borderRadius: 999 }}
                                 >
                                     {cat}
                                 </Button>
@@ -117,21 +117,30 @@ const Services = () => {
                         />
                     </motion.div>
 
-                    <Grid container spacing={4} justifyContent="center">
-                        {filteredServices.length > 0 ? (
-                            filteredServices.map((service, index) => (
-                                <Grid item xs={12} sm={6} md={4} key={service.id}>
+                    {filteredServices.length > 0 ? (
+                        <Box
+                            sx={{
+                                display: 'grid',
+                                gridTemplateColumns: {
+                                    xs: '1fr',
+                                    sm: 'repeat(2, minmax(0, 1fr))',
+                                    lg: 'repeat(3, minmax(0, 1fr))',
+                                },
+                                gap: 4,
+                                alignItems: 'stretch',
+                            }}
+                        >
+                            {filteredServices.map((service) => (
+                                <Box key={service.id} sx={{ minWidth: 0 }}>
                                     <ServiceCard service={service} />
-                                </Grid>
-                            ))
-                        ) : (
-                            <Grid item xs={12}>
-                                <Typography variant="h6" align="center" color="text.secondary">
-                                    No services found matching your criteria.
-                                </Typography>
-                            </Grid>
-                        )}
-                    </Grid>
+                                </Box>
+                            ))}
+                        </Box>
+                    ) : (
+                        <Typography variant="h6" align="center" color="text.secondary">
+                            No services found matching your criteria.
+                        </Typography>
+                    )}
                 </Container>
             </Box>
         </motion.div>

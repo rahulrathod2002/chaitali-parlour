@@ -1,10 +1,7 @@
-import React, { Suspense } from 'react';
-import { Box, Container, useTheme, useMediaQuery } from '@mui/material';
+import React from 'react';
+import { Box, Container, useTheme } from '@mui/material';
 import { motion } from 'framer-motion';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
 import AnimatedText from './AnimatedText';
-import ThreeDAccent from './ThreeDAccent';
 import CallToActions from '../shared/CallToActions';
 // import parlourBannerJpg from '../../public/parlour-banner.jpg'; // Import parlourBanner JPG
 // import parlourBannerPng from '../../public/parlour-banner.png'; // Import parlourBanner PNG
@@ -58,26 +55,6 @@ const Hero = () => {
                     zIndex: 1, // Overlay layer
                 } }
             />
-            {/* Subtle 3D Canvas */ }
-            <Box
-                sx={ {
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    zIndex: 0, // This zIndex is relative to its parent, which is the main Box. It should be above the image background but below the overlay.
-                } }
-            >
-                <Canvas camera={ { position: [ 0, 0, 5 ], fov: 75 } }>
-                    <ambientLight intensity={ 0.5 } />
-                    <pointLight position={ [ 10, 10, 10 ] } intensity={ 1 } />
-                    <Suspense fallback={ null }>
-                        <ThreeDAccent />
-                    </Suspense>
-                    <OrbitControls enableZoom={ false } enablePan={ false } enableRotate={ false } />
-                </Canvas>
-            </Box>
             <Container maxWidth="md" sx={ { position: 'relative', zIndex: 2, textAlign: 'center' } }>
                 <AnimatedText text="Best Beauty Parlour in Pune – Chaitali Beauty Parlour" color="white" />
                 <motion.p

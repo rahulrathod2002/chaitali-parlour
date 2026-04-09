@@ -11,7 +11,7 @@ import {
     useTheme,
     Chip,
 } from '@mui/material';
-import { Close as CloseIcon } from '@mui/icons-material';
+import CloseIcon from '@mui/icons-material/Close';
 import { motion } from 'framer-motion';
 import SEOHead from '../components/common/SEOHead';
 import ImageWithFallback from '../components/common/ImageWithFallback';
@@ -80,13 +80,24 @@ const Gallery = () => {
                         </Typography>
                     </motion.div>
 
-                    <Grid container spacing={3}>
+                    <Box
+                        sx={{
+                            display: 'grid',
+                            gridTemplateColumns: {
+                                xs: '1fr',
+                                sm: 'repeat(2, minmax(0, 1fr))',
+                                lg: 'repeat(3, minmax(0, 1fr))',
+                            },
+                            gap: 3,
+                            alignItems: 'stretch',
+                        }}
+                    >
                         {galleryImages.map((image) => (
-                            <Grid item xs={12} sm={6} md={4} key={image.id}>
+                            <Box key={image.id} sx={{ minWidth: 0 }}>
                                 <GalleryCard image={image} onClick={openLightbox} />
-                            </Grid>
+                            </Box>
                         ))}
-                    </Grid>
+                    </Box>
                 </Container>
 
                 <Dialog

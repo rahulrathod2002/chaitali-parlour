@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconButton, useTheme } from '@mui/material';
-import { WhatsApp as WhatsAppIcon } from '@mui/icons-material';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { motion } from 'framer-motion';
 
 const FloatingWhatsApp = () => {

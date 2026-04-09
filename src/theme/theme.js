@@ -3,18 +3,33 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 let theme = createTheme({
     palette: {
         primary: {
-            main: '#FFC0CB', // Soft Pink
+            main: '#b85c7a',
+            light: '#d989a1',
+            dark: '#8f3e5d',
+            contrastText: '#fffaf8',
+            soft: 'rgba(184, 92, 122, 0.10)',
         },
         secondary: {
-            main: '#DAA520', // Gold
+            main: '#d8a48f',
+            light: '#edd1c4',
+            dark: '#b87a62',
+            contrastText: '#40231e',
         },
         background: {
-            default: '#FFFFFF', // White
-            paper: '#FDF5E6', // A slightly off-white, elegant tone
+            default: '#fff7f5',
+            paper: '#fffdfb',
         },
         text: {
-            primary: '#333333',
-            secondary: '#666666',
+            primary: '#2f2430',
+            secondary: '#6e5b67',
+        },
+        divider: 'rgba(89, 55, 66, 0.12)',
+        surface: {
+            base: '#fff7f5',
+            card: '#fffdfb',
+            muted: '#f9ece8',
+            dark: '#4b2734',
+            deep: '#24141d',
         },
     },
     typography: {
@@ -37,27 +52,42 @@ let theme = createTheme({
     },
     spacing: 8,
     shape: {
-        borderRadius: 8,
+        borderRadius: 12,
     },
-    shadows: [ 'none', '0px 4px 20px rgba(0,0,0,0.05)', ...Array(23).fill('none') ],
+    shadows: [
+        'none',
+        '0px 10px 30px rgba(92, 56, 68, 0.06)',
+        '0px 14px 34px rgba(92, 56, 68, 0.08)',
+        '0px 18px 40px rgba(92, 56, 68, 0.10)',
+        '0px 24px 50px rgba(92, 56, 68, 0.12)',
+        '0px 28px 56px rgba(92, 56, 68, 0.14)',
+        ...Array(19).fill('0px 32px 72px rgba(92, 56, 68, 0.16)'),
+    ],
     components: {
+        MuiCssBaseline: {
+            styleOverrides: {
+                body: {
+                    background: 'linear-gradient(180deg, #fff7f5 0%, #fffdfb 100%)',
+                },
+            },
+        },
         MuiButton: {
             styleOverrides: {
                 root: {
                     borderRadius: 50,
-                    padding: '10px 24px',
+                    padding: '12px 26px',
                     fontWeight: 600,
                     textTransform: 'none',
                     transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
                 },
                 containedPrimary: {
-                    background: 'linear-gradient(45deg, #FFC0CB 30%, #FF99AC 90%)', // Pink to a slightly stronger pink
+                    background: 'linear-gradient(135deg, #b85c7a 0%, #d989a1 100%)',
                     border: 0,
-                    color: '#333333',
-                    boxShadow: '0 3px 5px 2px rgba(255, 182, 193, .3)',
+                    color: '#fffaf8',
+                    boxShadow: '0 12px 30px rgba(184, 92, 122, 0.25)',
                     '&:hover': {
-                        transform: 'scale(1.05)',
-                        boxShadow: '0 5px 10px 4px rgba(255, 182, 193, .4)',
+                        transform: 'translateY(-2px)',
+                        boxShadow: '0 16px 34px rgba(184, 92, 122, 0.3)',
                     },
                     '&.Mui-disabled': {
                         background: '#e0e0e0',
@@ -68,10 +98,11 @@ let theme = createTheme({
                 },
                 outlinedPrimary: {
                     borderWidth: '2px',
+                    borderColor: '#d7b2bf',
                     '&:hover': {
                         borderWidth: '2px',
-                        transform: 'scale(1.05)',
-                        backgroundColor: 'rgba(255, 192, 203, 0.1)' // Faint pink background on hover
+                        transform: 'translateY(-2px)',
+                        backgroundColor: 'rgba(184, 92, 122, 0.06)'
                     }
                 }
             },
@@ -79,10 +110,13 @@ let theme = createTheme({
         MuiCard: {
             styleOverrides: {
                 root: {
+                    borderRadius: 14,
+                    backgroundColor: '#fffdfb',
+                    border: '1px solid rgba(89, 55, 66, 0.08)',
                     transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
                     '&:hover': {
-                        transform: 'translateY(-5px)',
-                        boxShadow: '0px 8px 25px rgba(0,0,0,0.08)',
+                        transform: 'translateY(-6px)',
+                        boxShadow: '0px 22px 50px rgba(92, 56, 68, 0.14)',
                     },
                 },
             },

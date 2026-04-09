@@ -1,132 +1,130 @@
-🌸 Chaitali Parlour - Modern React Web Application
+# Chaitali Parlour
+
+## Commands
+
+```bash
+npm install
+npm run dev
+npm run build
+npm run preview
+npm run lint
+```
+
+## Production URL
+
+`https://chaitali-parlour.netlify.app/`
 
 ## Project Overview
 
-This project is a comprehensive, responsive, and dynamic web application developed for "Chaitali Parlour," a ladies' beauty salon. The core objective was to establish a strong online presence, simplify client interactions, and beautifully showcase the parlour's range of services. It provides a seamless user experience from browsing services to booking appointments, all within a modern, aesthetically pleasing interface.
+Chaitali Parlour is a React + Vite website for a beauty parlour business. The project focuses on a polished salon-style presentation with clear service discovery, testimonials, gallery browsing, appointment booking, and contact information.
 
-## ✨ Key Features
+The UI is built around Material UI, Framer Motion, and a custom theme tailored for a beauty and parlour brand. The current version also includes layout cleanup, improved navigation behavior, responsive card grids, and updated SEO/public assets.
 
-*   **Stunning & Responsive UI:** A clean, modern design built with Material-UI, enhanced with gradient backgrounds and glassmorphism effects for a visually stunning experience across all devices.
-*   **Detailed Service & Offer Listings:** Dedicated sections for clients to explore all available beauty services and attractive promotional offers with dynamic layouts.
-*   **Streamlined Online Appointment Booking:** An easy-to-use and visually appealing booking form for scheduling appointments, enhancing operational efficiency.
-*   **Dynamic Gallery & Testimonials:** Engaging visual galleries showcasing transformations and client testimonials to build trust and highlight service quality.
-*   **Informative Blog Section:** A curated blog offering beauty tips, industry trends, and parlour news to engage visitors and boost SEO.
-*   **SEO Optimization:** Implemented using `react-helmet-async` for effective management of meta tags and structured data, crucial for search engine visibility.
-*   **Interactive User Experience:** Smooth, modern animations powered by `framer-motion` and subtle `react-three-fiber` 3D accents create an engaging and contemporary feel.
-*   **Direct Client Communication:** Integration of a floating WhatsApp button for instant and convenient client outreach.
-*   **Robust Client-Side Routing:** Seamless single-page application navigation handled by `react-router-dom`.
-*   **Image Fallbacks:** Graceful handling of missing images with placeholder fallbacks to ensure a polished look.
+## Business Details
 
-## 🚀 Technologies Used
+- Business name: `Chaitali Beauty Parlour`
+- Alternate name: `Chaitali Parlour`
+- Production site: `https://chaitali-parlour.netlify.app/`
+- Main contact page: `https://chaitali-parlour.netlify.app/contact`
+- Booking page: `https://chaitali-parlour.netlify.app/book`
+- Services page: `https://chaitali-parlour.netlify.app/services`
+- Gallery page: `https://chaitali-parlour.netlify.app/gallery`
 
-*   **Frontend Framework:** React.js
-*   **UI Library:** Material-UI (`@mui/material`, `@mui/icons-material`, `@emotion/react`, `@emotion/styled`)
-*   **Build Tool:** Vite
-*   **Routing:** React Router DOM
-*   **Animations:** Framer Motion
-*   **3D Graphics:** React Three Fiber (`@react-three/fiber`, `@react-three/drei`)
-*   **Date Pickers:** Material-UI X Date Pickers (`@mui/x-date-pickers`) with `date-fns` adapter
-*   **SEO Management:** React Helmet Async
-*   **Carousel Component:** React Material-UI Carousel
+## Tech Stack
 
-## 🛠️ Getting Started
+- React
+- Vite
+- Material UI
+- Emotion
+- Framer Motion
+- React Router DOM
+- MUI X Date Pickers
+- Day.js
 
-Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+## Local Development
 
-### Prerequisites
+1. Install dependencies:
 
-*   Node.js (LTS version recommended)
-*   npm (comes with Node.js) or Yarn
+```bash
+npm install
+```
 
-### Installation
+2. Start the dev server:
 
-1.  **Clone the repository:**
-    ```sh
-    git clone https://github.com/your-username/chaitali-parlour.git
-    cd chaitali-parlour
-    ```
-    *(Replace the URL with your actual repository URL)*
-
-2.  **Install dependencies:**
-    Due to potential peer dependency conflicts with newer React versions, it's recommended to use the `--legacy-peer-deps` flag:
-    ```sh
-    npm install --legacy-peer-deps
-    ```
-    or with Yarn:
-    ```sh
-    yarn install
-    ```
-
-3.  **Static Assets:**
-    Ensure your static assets in the `public/` directory are referenced correctly in `index.html` using root-relative paths (e.g., `/favicon.ico`).
-
-### Running the Project
-
-To start the development server:
-
-```sh
+```bash
 npm run dev
 ```
 
-The application will be accessible at http://localhost:5173.
+3. Open the local URL shown by Vite, usually:
 
-## 🚀 Deployment
-
-### Netlify
-
-This project includes a `public/_redirects` file configured for deployment on Netlify. This ensures that client-side routing with React Router works correctly. The rule `/* /index.html 200` redirects all traffic to `index.html`, allowing React Router to handle the routing on the client-side.
-
-To deploy on Netlify:
-
-1.  Push your code to a GitHub repository.
-2.  Connect your repository to Netlify.
-3.  Set the build command to `npm run build` (or `yarn build`).
-4.  Set the publish directory to `dist`.
-
-Netlify will automatically detect and apply the redirect rule.
-
-## 🎨 Customization & Data Management
-
-This project uses local JavaScript files in the `src/data/` directory to manage content. You can easily update the parlour's information by editing these files.
-
-*   **Services:** `src/data/services.js`
-*   **Offers:** `src/data/offers.js`
-*   **Testimonials:** `src/data/testimonials.js`
-*   **Blog Posts:** `src/data/blog.js`
-
-## 📂 Project Structure
-
+```bash
+http://localhost:5173
 ```
+
+## Build And Preview
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Linting
+
+Run ESLint:
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```text
 chaitali-parlour/
-├── public/                  # Static assets (favicons, manifest, etc.)
+├── public/
+│   ├── favicon/
+│   ├── manifest.json
+│   ├── robots.txt
+│   ├── sitemap.xml
+│   └── _redirects
 ├── src/
-│   ├── assets/              # Images, fonts, etc.
-│   ├── components/          # Reusable UI components
-│   │   ├── common/          # Common components (Header, Footer, Fallbacks, etc.)
-│   │   ├── gallery/
-│   │   ├── hero/
-│   │   ├── services/
-│   │   └── testimonials/
-│   ├── context/             # React Context for global state
-│   ├── data/                # Local data for services, offers, etc.
-│   ├── pages/               # Top-level page components
-│   ├── theme/               # Material-UI theme configuration
-│   ├── App.jsx              # Main application component with routing
-│   └── main.jsx             # Entry point for React application
-├── .gitignore               # Files to be ignored by Git
-├── package.json             # Project dependencies and scripts
-├── vite.config.js           # Vite build tool configuration
-└── index.html               # Main HTML file
+│   ├── assets/
+│   ├── components/
+│   ├── context/
+│   ├── data/
+│   ├── pages/
+│   ├── theme/
+│   ├── utils/
+│   ├── App.jsx
+│   └── main.jsx
+├── package.json
+├── vite.config.js
+└── README.md
 ```
 
-## 📄 License
+## Deployment Notes
 
-This project is open-sourced under the MIT License.
+- The app is configured for static hosting with Vite output in `dist/`.
+- `public/_redirects` supports SPA routing for Netlify.
+- The production URL used in sitemap and public SEO assets is:
 
-## 🧑‍💻 Author
+```text
+https://chaitali-parlour.netlify.app/
+```
 
-YourName/Alias
+## Current Highlights
 
-*   Initial Work - [YourGitHubProfile/LinkedInProfile](https://github.com/your-username)
+- Responsive homepage with service, review, and offer sections
+- About page with updated journey timeline through 2026
+- Services page aligned with homepage card design
+- Structured gallery layout
+- Appointment booking page
+- Contact page with refined form and visit card
+- Footer/header navigation with scroll-to-top behavior
 
-Feel free to connect or provide feedback!

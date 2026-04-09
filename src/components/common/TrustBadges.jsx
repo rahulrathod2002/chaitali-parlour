@@ -1,18 +1,16 @@
 import React from 'react';
 import { Container, Typography, Grid, useTheme } from '@mui/material';
-import {
-    Wc as WcIcon,
-    CleanHands as CleanHandsIcon,
-    LocalFlorist as LocalFloristIcon,
-} from '@mui/icons-material';
+import WcIcon from '@mui/icons-material/Wc';
+import CleanHandsIcon from '@mui/icons-material/CleanHands';
+import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
 import { motion } from 'framer-motion';
 
 const TrustBadges = () => {
     const theme = useTheme();
     return (
         <Container maxWidth="lg">
-            <Grid container spacing={4} justifyContent="center" textAlign="center">
-                <Grid item xs={12} sm={4}>
+            <Grid container spacing={4} sx={{ justifyContent: 'center', textAlign: 'center' }}>
+                <Grid size={{ xs: 12, sm: 4 }}>
                     <motion.div
                         initial={{ y: 50, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
@@ -26,7 +24,7 @@ const TrustBadges = () => {
                         </Typography>
                     </motion.div>
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid size={{ xs: 12, sm: 4 }}>
                     <motion.div
                         initial={{ y: 50, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
@@ -40,7 +38,7 @@ const TrustBadges = () => {
                         </Typography>
                     </motion.div>
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid size={{ xs: 12, sm: 4 }}>
                     <motion.div
                         initial={{ y: 50, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
